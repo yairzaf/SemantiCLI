@@ -4,3 +4,9 @@ twine>=4.0.0
 black>=23.0.0
 isort>=5.0.0
 flake8>=6.0.0
+langchain
+langchain_community
+onnxruntime
+tokenizers
+appdirs
+numpy
