@@ -1,6 +1,6 @@
-# semanticli
+# SemantiCLI
 
-A command line tool using Python's argparse.
+Semantic search in the command line.
 
 ## Installation
 
@@ -14,14 +14,39 @@ From source:
 pip install .
 ```
 
-## Usage
+## Quick Usage
 
 ```bash
-semanticli greet Alice
-semanticli greet Bob --count 3
-semanticli version
-semanticli --help
+smnti --help
+smnti "Search Me" -f text.txt
+cat Alice.txt | smnti "Deck of cards"
+smnti -cs 0.6 -c 200 -o 10 -s \n -n "Big Ship" -f treasure.txt
 ```
+## Command-Line Options
+
+-V or --version: Print current version.
+
+--debug: Print debug logs.
+
+-cs or --cos-sim: Cosine similarity greater or equal threshold for printing a match (between 0-1), default is 0.8.
+
+-v or --invert-match: Print anything below the cosine similiarity threshold.
+
+-n or --line: Print file name, line numbers, and similarity.
+
+-s sep_str or --separator sep_str: Separation string to divide with, default is \n\n.
+
+-c size or --chunk size: Chunk size number, might be larger if didn't encounter the separator, default is 4000.
+
+-o size or --chunk-overlap size: Overlap size number between chunks, default is 200.
+
+-lm or --list-models: List installed embedding models.
+
+-m model or --model model: Use specified model for this search only, default is mixedbread-ai/mxbai-embed-large-v1.
+
+-im model or --install-model model: Install specified embeddings model for hugging face.
+
+-rm model or --remove-model model: Uninstall specified model.
 
 ## Development Setup
 
@@ -143,10 +168,10 @@ make binary-windows
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Features
+<!-- ## Features
 
 - Modular command system
 - Logging with debug mode
 - Unit tests
 - No external dependencies
-- Cross-platform binary building
+- Cross-platform binary building -->
