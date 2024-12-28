@@ -44,7 +44,7 @@ smnti -cs 0.6 -c 200 -o 10 -s \n -n "Big Ship" -f treasure.txt
 
 -m model or --model model: Use specified model for this search only, default is mixedbread-ai/mxbai-embed-large-v1.
 
--im model or --install-model model: Install specified embeddings model for hugging face.
+-im model or --install-model model: Install specified embeddings model from hugging face.
 
 -rm model or --remove-model model: Uninstall specified model.
 
