@@ -5,7 +5,7 @@ import requests
 from appdirs import user_data_dir
 from shutil import rmtree
 
-DEFAULT_MODEL = "mixedbread-ai/mxbai-embed-large-v1"
+DEFAULT_MODEL = "Xenova/all-MiniLM-L6-v2"
 
 MODELS_DIR = Path(user_data_dir("semanticli")) / "models"
 HUB_URL = "https://huggingface.co"
@@ -23,12 +23,13 @@ def download_model(model_name , hub=HUB_URL , url_options = HUB_URL_OPTIONS):
     model_dir.mkdir(parents=True, exist_ok=True)
     repo_url = hub + "/"  + model_name + url_options
     url_append = "?dowload=true"
-    download_file(model_name,"model.onnx",model_dir,repo_url,"onnx/",url_append)
-    download_file(model_name,"tokenizer.json",model_dir,repo_url,file_url_append=url_append)
+    download_file(model_name,"model.onnx",model_dir,repo_url,"onnx/",url_append,required=True)
+    download_file(model_name,"model.onnx_data",model_dir,repo_url,"onnx/",url_append)
+    download_file(model_name,"tokenizer.json",model_dir,repo_url,file_url_append=url_append,required=True)
     download_file(model_name,"config.json",model_dir,repo_url,file_url_append=url_append)
     print("Successfully downloaded " + model_name +".")
 
-def download_file(model_name,file_name, model_dir, repo_url, file_url_prepend="", file_url_append=""):
+def download_file(model_name,file_name, model_dir, repo_url, file_url_prepend="", file_url_append="",required=False):
     file_path = model_dir / file_name
     if file_path.exists(): 
         os.remove(str(file_path))
@@ -37,6 +38,9 @@ def download_file(model_name,file_name, model_dir, repo_url, file_url_prepend=""
     response = requests.get(file_url, stream=True)
     if not response.ok:
         print("Couldn't find: " + file_url)
+        if not required:
+            print("file not required, continue...")
+            return
         print("Check model name, repo or internet connection.")
         delete_model(model_name)
         sys.exit(1)

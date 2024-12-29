@@ -1,6 +1,7 @@
 # SemantiCLI
 
-Semantic search in the command line.
+### Semantic search in the command line.
+look up strings using semantic search, see cosine similarity between strings.
 
 ## Installation
 
@@ -23,7 +24,7 @@ cat Alice.txt | smnti "Deck of cards"
 smnti -cs 0.6 -c 200 -o 10 -s \n -n "Big Ship" -f treasure.txt
 ```
 ## Command-Line Options
-
+```
 -V or --version: Print current version.
 
 --debug: Print debug logs.
@@ -47,7 +48,10 @@ smnti -cs 0.6 -c 200 -o 10 -s \n -n "Big Ship" -f treasure.txt
 -im model or --install-model model: Install specified embeddings model from hugging face.
 
 -rm model or --remove-model model: Uninstall specified model.
+```
+note:
 
+SemantiCLI is using ONNX runtime for model inference. it can only install models that have "model.onnx" in their repo at hugginface.
 ## Development Setup
 
 1. Clone the repository:

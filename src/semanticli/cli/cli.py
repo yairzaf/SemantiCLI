@@ -116,17 +116,17 @@ def search_file(fname,model,splitter,embedding,cossim,is_lines,is_invert):
         cont_embd = model([content])[0]
         similarity = cosine_similarity(embedding,cont_embd)
         passed_threshold = similarity >= cossim
+        end = content.count('\n')
         if is_invert:
             passed_threshold = not passed_threshold
-        if passed_threshold:
+        if passed_threshold: 
             if(is_lines):
                 print("===========================")
                 print("===>COS-SIMILARITY: "+str(similarity))
-                end = content.count('\n')
                 print("===>LINES: {start} - {end}".format(start=line,end=line+end))
                 print("===========================")
-                line+=end
             print(content)
+        line+=end
         
         
 
