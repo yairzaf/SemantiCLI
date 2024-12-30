@@ -56,7 +56,7 @@ SemantiCLI is using ONNX runtime for model inference. it can only install models
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/semanticli.git
+git clone https://github.com/yairzaf/semanticli.git
 cd semanticli
 ```
 
