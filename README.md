@@ -43,7 +43,7 @@ smnti -cs 0.6 -c 200 -o 10 -s \n -n "Big Ship" -f treasure.txt
 
 -lm or --list-models: List installed embedding models.
 
--m model or --model model: Use specified model for this search only, default is mixedbread-ai/mxbai-embed-large-v1.
+-m model or --model model: Use specified model for this search only, default is Xenova/all-MiniLM-L6-v2.
 
 -im model or --install-model model: Install specified embeddings model from hugging face.
 
